@@ -14,9 +14,10 @@ public class KarelDefendsDemocracy extends SuperKarel {
 				move();
 			}
 			if(noBeepersPresent()) {
-				pickBeeperTop();		//moves up and picks beeper from top if any
-				pickBeeperBottom();		//from top moves to bottom & picks beeper if any
-				moveToNextBallotRect();	//from bottom moves to center & then to next ballot rectangle
+				turnLeft();
+				pickBeeperTopBottom();		//moves up and picks beeper from top if any
+				pickBeeperTopBottom();		//from top moves to bottom & picks beeper if any
+				moveToNextBallotRect();	   //from bottom moves to center & then to next ballot rectangle
 				if(frontIsClear()) {
 					move();
 				}
@@ -24,20 +25,8 @@ public class KarelDefendsDemocracy extends SuperKarel {
 		}
 	}
 	
-	//Function to check and pick beepers from top
-	private void pickBeeperTop() {
-		turnLeft();
-		while(frontIsClear()) {
-			move();
-			while(beepersPresent()) {	//while loop so that n number of beepers can be picked
-				pickBeeper();
-			}
-		}
-		turnAround();
-	}
-	
-	//function to check and pick beepers from bottom
-	private void pickBeeperBottom() {
+	//function to check and pick beepers 
+	private void pickBeeperTopBottom() {
 		while(frontIsClear()) {
 			move();
 			while(beepersPresent()) {
